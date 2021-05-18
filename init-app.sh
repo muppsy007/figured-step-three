@@ -3,12 +3,12 @@
 ## Copy functional .env
 cp .env.example .env
 
+## Prime the sqlite DB file for use by unit tests
+docker-compose exec app touch database/figured_test.sqlite
+
 ## Run composer and yarn to obtain dependencies
 docker-compose exec app composer install
 docker-compose exec app yarn
-
-## Run migrations to set up models to support functional test app
-docker-compose exec app php artisan migrate
 
 ## Just for this test, migrate from scratch and seed
 docker-compose exec app php artisan migrate:fresh --seed
