@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+## Copy functional .env
+cp .env.example .env
+
 ## Run composer and yarn to obtain dependencies
 docker-compose exec app composer install
 docker-compose exec app yarn
